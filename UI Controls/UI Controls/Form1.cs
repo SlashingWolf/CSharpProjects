@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.IO;
 namespace UI_Controls
 {
     public partial class Form1 : Form
@@ -16,7 +16,7 @@ namespace UI_Controls
         {
             InitializeComponent();
         }
-
+        private string gender = null;
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -74,5 +74,47 @@ namespace UI_Controls
                  e.Handled = e.KeyChar != (char)Keys.Back;
              }
         }
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+               {
+                  
+               }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(radioButton1.Checked == true)
+            {
+                gender = "Male";
+            }
+            if(radioButton2.Checked == false)
+            {
+                gender = "Female";
+            }
+            string foreignLanguage;
+            if(checkBox1.Checked == true)
+            {
+                foreignLanguage = "Yes";
+            }
+            else
+            {
+                foreignLanguage = "No";
+            }
+            //NOT WORKING
+            string formInfo = "First Name: " + textBox2.Text + "\r\nLast Name: " + textBox3.Text + "\r\nDOB: " + textBox4.Text + "\r\nGender: " + gender + "\r\nSpeak a foreign language " + foreignLanguage + "\r\nState: " + comboBox1.SelectedItem + "\r\nCity: " + comboBox2.SelectedItem + "\r\nAddress: " + textBox1.Text + "\r\nZip Code: " + textBox5.Text;
+            string fileName = "C:\\" +textBox2.Text + "_" + textBox3 + "_" + ".txt";
+            System.IO.StreamWriter file = new System.IO.StreamWriter("C:\\");
+            file.WriteLine(formInfo);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        
      }
 }
